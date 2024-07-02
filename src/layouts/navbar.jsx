@@ -9,9 +9,36 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
-import { CircleUser, Menu, Plane } from "lucide-react";
+import { CircleUser, Menu, Plane, Home, MapPin, Calendar, Phone } from "lucide-react";
 import { NavLink, Outlet } from "react-router-dom";
-import { navItems } from "../App";
+
+const navItems = [
+  {
+    title: "Home",
+    to: "/",
+    icon: <Home className="h-4 w-4" />,
+  },
+  {
+    title: "Destinations",
+    to: "/destinations",
+    icon: <MapPin className="h-4 w-4" />,
+  },
+  {
+    title: "Bookings",
+    to: "/bookings",
+    icon: <Calendar className="h-4 w-4" />,
+  },
+  {
+    title: "Contact Us",
+    to: "/contact-us",
+    icon: <Phone className="h-4 w-4" />,
+  },
+  {
+    title: "Flight Search",
+    to: "/flight-search",
+    icon: <Plane className="h-4 w-4" />,
+  },
+];
 
 const Layout = () => {
   return (
