@@ -13,6 +13,15 @@ import { CircleUser, Menu, Plane } from "lucide-react";
 import { NavLink, Outlet } from "react-router-dom";
 import { navItems } from "../App";
 
+const navItems = [
+  // existing nav items
+  {
+    title: "Flight Search",
+    to: "/flight-search",
+    icon: <Plane className="h-4 w-4" />,
+  },
+];
+
 const Layout = () => {
   return (
     <div className="flex min-h-screen w-full flex-col">
