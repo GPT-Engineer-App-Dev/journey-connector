@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { DatePickerDemo } from "@/components/ui/date-picker";
 import { useQuery } from "@tanstack/react-query";
 import { fetchFlights } from "@/lib/api";
+import { useNavigate } from "react-router-dom";
 
 const FlightSearch = () => {
   const [departureCity, setDepartureCity] = useState("");
@@ -11,6 +12,7 @@ const FlightSearch = () => {
   const [departureDate, setDepartureDate] = useState(null);
   const [returnDate, setReturnDate] = useState(null);
   const [passengers, setPassengers] = useState(1);
+  const navigate = useNavigate();
 
   const { data, error, isLoading, refetch } = useQuery({
     queryKey: ["flights", { departureCity, destinationCity, departureDate, returnDate, passengers }],
@@ -20,6 +22,10 @@ const FlightSearch = () => {
 
   const handleSearch = () => {
     refetch();
+  };
+
+  const handleBook = (flight) => {
+    navigate("/booking-confirmation", { state: { flight, passengers } });
   };
 
   return (
@@ -69,6 +75,7 @@ const FlightSearch = () => {
                 <p>Departure: {flight.departureCity} at {flight.departureTime}</p>
                 <p>Arrival: {flight.destinationCity} at {flight.arrivalTime}</p>
                 <p>Price: ${flight.price}</p>
+                <Button onClick={() => handleBook(flight)}>Book</Button>
               </div>
             ))}
           </div>
